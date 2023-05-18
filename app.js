@@ -31,7 +31,7 @@ app.post('/balance', (req, res) => {
   });
   
 // Start the server
-app.listen(4430, () => {
-  console.log('Server started on port 4430');
+app.listen(8000, () => {
+  console.log('Server started on port 8000');
 });
 module.exports ={app};
