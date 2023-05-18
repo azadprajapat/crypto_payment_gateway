@@ -203,9 +203,6 @@ function sendMessage(message) {
 }
 
 process.on("uncaughtException", err => console.log(err));
-const getPublicIp = require('./find_ip').getPublicIp();
-currentIP=await getPublicIp();
-
 
 while (1) {
     PEERS.forEach(peer => connect(peer));
