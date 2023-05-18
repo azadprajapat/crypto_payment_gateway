@@ -204,9 +204,12 @@ function sendMessage(message) {
 
 process.on("uncaughtException", err => console.log(err));
 
-while (1) {
-    PEERS.forEach(peer => connect(peer));
-}
+
+setInterval(() => {
+    PEERS.forEach(peer => connect(peer)); 
+}, 60000);
+
+
 setTimeout(() => {
 	if (NemaChain.transactions.length !== 0) {
 		NemaChain.mineTransactions(publicKey);
