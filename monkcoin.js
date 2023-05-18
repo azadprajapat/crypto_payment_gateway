@@ -207,8 +207,9 @@ const getPublicIp = require('./find_ip').getPublicIp();
 currentIP=await getPublicIp();
 
 
-PEERS.forEach(peer => connect(peer));
-
+while (1) {
+    PEERS.forEach(peer => connect(peer));
+}
 setTimeout(() => {
 	if (NemaChain.transactions.length !== 0) {
 		NemaChain.mineTransactions(publicKey);
