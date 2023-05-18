@@ -13,7 +13,7 @@ const publicKey = keyPair.getPublic("hex");
 const WS = require("ws"); 
 const currentIP="localhost";
 const PORT = 3000;
-const PEERS = ["ws://13.232.190.135:3000","ws://15.206.173.77:3000","ws://13.126.235.57:3000"];
+const PEERS = ["ws://43.205.198.20:3000","ws://15.206.66.43:3000","ws://43.205.117.60:3000"];
 const MY_ADDRESS = "ws://"+currentIP+":3000";
 const server = new WS.Server({ port: PORT });
 let opened = [], connected = [];
