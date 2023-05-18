@@ -10,9 +10,8 @@ const privateKey = "39a4a81e8e631a0c51716134328ed944501589b447f1543d9279bacc7f3e
 const keyPair = ec.keyFromPrivate(privateKey, "hex");
 const publicKey = keyPair.getPublic("hex");
 
-const WS = require("ws");
-const { currentIP } = require("./find_ip");
-
+const WS = require("ws"); 
+const currentIP="127.0.0.1";
 const PORT = 3000;
 const PEERS = ["ws://13.232.190.135:3000","ws://15.206.173.77:3000","ws://13.126.235.57:3000"];
 const MY_ADDRESS = "ws://"+currentIP+":3000";
@@ -204,6 +203,9 @@ function sendMessage(message) {
 }
 
 process.on("uncaughtException", err => console.log(err));
+const getPublicIp = require('./find_ip').getPublicIp();
+currentIP=await getPublicIp();
+
 
 PEERS.forEach(peer => connect(peer));
 
