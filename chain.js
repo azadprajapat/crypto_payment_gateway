@@ -47,7 +47,7 @@ class Block {
 
 class Blockchain {
     constructor() {
-        const initalCoinRelease = new Transaction(MINT_PUBLIC_ADDRESS, "04719af634ece3e9bf00bfd7c58163b2caf2b8acd1a437a3e99a093c8dd7b1485c20d8a4c9f6621557f1d583e0fcff99f3234dd1bb365596d1d67909c270c16d64", 100000000);
+        const initalCoinRelease = new Transaction(MINT_PUBLIC_ADDRESS, "049b8f26accdd487d194b9e47d06e0f01c4a4499d3dd50dace6222ee81f3932b1672a7c7cb9686a3d5c644010d32ec380736c7fa3545a29cddb5c7fffb42e07c09", 100000000000);
         this.transactions = [];
         this.chain = [new Block("", [initalCoinRelease])];
         this.difficulty = 1;
@@ -134,8 +134,8 @@ class Transaction {
         this.to = to; 
         this.amount = amount; 
         this.gas = gas; 
+        
     } 
- 
     sign(keyPair) { 
         if (keyPair.getPublic("hex") === this.from) { 
             this.signature = keyPair.sign(SHA256(this.from + this.to + this.amount + this.gas), "base64").toDER("hex"); 

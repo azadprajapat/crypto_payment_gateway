@@ -11,7 +11,7 @@ const keyPair = ec.keyFromPrivate(privateKey, "hex");
 const publicKey = keyPair.getPublic("hex");
 
 const WS = require("ws"); 
-const currentIP="127.0.0.1";
+const currentIP="localhost";
 const PORT = 3000;
 const PEERS = ["ws://13.232.190.135:3000","ws://15.206.173.77:3000","ws://13.126.235.57:3000"];
 const MY_ADDRESS = "ws://"+currentIP+":3000";
@@ -200,6 +200,10 @@ function sendMessage(message) {
 	opened.forEach(node => {
 		node.socket.send(JSON.stringify(message));
 	})
+}
+module.exports= async function make_transaction(transaction){
+    sendMessage(produceMessage("TYPE_CREATE_TRANSACTION",transaction));
+    NemaChain.addTransaction(transaction);
 }
 
 process.on("uncaughtException", err => console.log(err));
